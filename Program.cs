@@ -10,7 +10,7 @@ namespace DZ1
         {
             Bank bank = new();
 
-            User customer1 = new User
+            User user1 = new User
             {
                 FirstName = "John",
                 LastName = "Doe",
@@ -18,7 +18,7 @@ namespace DZ1
                 Balance = 1000
             };
 
-            User customer2 = new User
+            User user2 = new User
             {
                 FirstName = "Jane",
                 LastName = "Smith",
@@ -29,8 +29,8 @@ namespace DZ1
             bank.NewUser(customer1);
             bank.NewUser(customer2);
 
-            customer1.GetBalance();
-            customer2.GetBalance();
+            user1.GetBalance();
+            user2.GetBalance();
 
             TransactionTransfer transfer = new()
             {
@@ -41,8 +41,18 @@ namespace DZ1
 
             bank.ExecuteTransaction(transfer);
 
-            customer1.GetBalance();
-            customer2.GetBalance();
+            user1.GetBalance();
+            user2.GetBalance();
+
+            user1.Withdraw(100);
+            user2.Withdraw(100);
+
+
+            TransactionTransfer transaction = new TransactionTransfer();
+            transaction.SourceAccountNumber = user1.UserId;
+            transaction.DestinationAccountNumber = user2.UserId;
+
+            bank.ExecuteTransaction(transaction);
         }
     }
 }

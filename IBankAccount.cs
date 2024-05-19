@@ -8,7 +8,7 @@ namespace DZ1
 {
     public interface IBankAccount
     {
-        void GetBalance();
+        void sGetBalance();
         void Deposit(decimal amount);
         void Withdraw(decimal amount);
     }
